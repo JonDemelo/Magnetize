@@ -1,6 +1,6 @@
 ## magnetscrape.py
 
-MagnetScrap.py provides a way to easily scrape magnet information from a desired URL using Python.
+magnetscrape.py provides a way to easily scrape magnet information from a desired URL using Python.
 
 ## Python Dependencies:
 
