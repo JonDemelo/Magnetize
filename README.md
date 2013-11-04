@@ -31,7 +31,7 @@ See http://en.wikipedia.org/wiki/Magnet_URI_scheme#Parameters for an understandi
 
 **Note:** The *magnet* parameter is the full magnet as a whole.
 
-**Also Note:** Due to the struture of the Magnet URI Scheme, each dictionary subset has the potential to in turn have multiple subsections. For example, a magnet could have more then one tracker (tr). Therefore, each dictionary member is in turn is a list which either contains None (if this magnet provider does not support a certain parameter), list\[0\] (where this parameter has only a single data point i.e. dn), or more then one member ex. list\[0\], list\[1\], list\[2\] etc. (very likely for tr). 
+**Also Note:** Due to the structure of the Magnet URI Scheme, each dictionary subset has the potential to in turn have multiple subsections. For example, a magnet could have more then one tracker (tr). Therefore, each dictionary member is in turn is a list which either contains None (if this magnet provider does not support a certain parameter), list\[0\] (where this parameter has only a single data point i.e. dn), or more then one member ex. list\[0\], list\[1\], list\[2\] etc. (very likely for tr). 
 
 ## Example Usage:
 
