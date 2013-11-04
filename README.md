@@ -13,6 +13,8 @@ magnetscrape.py provides a way to easily scrape magnet information from a desire
 The 'scrape(url)' function within the project will take in as a parameter the requested internet URL,
 and will attempt to scrape the URL for any and all magnet links that exist. It will collect each magnet link, break apart its contents by the parameters set forth by the Magnet URI Scheme, and store these contents as a dictionary structure. These dictionary structures are then collected together in a list, which is then returned to the user.
 
+
+**Note:** I've included an extra function dn\_clean\_up(dn) which will clean up the readability of any inputted dn. You would use this if you wanted to get the magnet's original title.
 ## Dictionary Parameters 
 
 See http://en.wikipedia.org/wiki/Magnet_URI_scheme#Parameters for an understanding of each magnet paramter's purpose; and here is a list of each included magnet parameter:
