@@ -4,9 +4,9 @@ MagnetScrap.py provides a way to easily scrape magnet information from a desired
 
 ## Python Dependencies:
 
-urllib2
-re
-BeautifulSoup4 http://www.crummy.com/software/BeautifulSoup/#Download
+* urllib2
+* re
+* BeautifulSoup4 http://www.crummy.com/software/BeautifulSoup/#Download
 
 ## Functional Description
 
