@@ -46,7 +46,7 @@ See http://en.wikipedia.org/wiki/Magnet_URI_scheme#Parameters for an understandi
 ## Example Usage:
 
 ```python
-import mangetscrape
+import magnetize
 
 url = 'your url here'
 magnet_list = magnetize.scrape(url)
