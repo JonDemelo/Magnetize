@@ -49,18 +49,13 @@ def scrape(url):
 # function, and open each magnet connection to the machine's designated magnet
 # application.
 #
-# Error: Can't run on windows via Cygwin due to a side effect of Cygwin
+# Error: Can't run on cygwin-Windows due to a side effect of Cygwin
 # running posix style overtop Windows. i.e. commands dont go down to Windows.
-def download(magnet_list):
+def activate(magnet_list):
     if magnet_list is not None:
         for magnet_dict in magnet_list:
             magnet_link = magnet_dict["magnet"]
             if magnet_link is not None:
-                print ("\nAttempt to activate the following magnet link with"
-                       "the machine's default magnet application: "
-                       + magnet_link +
-                       "\n")
-
                 if sys.platform.startswith('darwin'):  # OSX
                     subprocess.call(('open', magnet_link))
                 elif os.name == 'nt':  # Windows

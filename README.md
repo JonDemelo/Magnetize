@@ -1,11 +1,15 @@
 ## magnetscrape.py
 
-magnetscrape.py provides a way to easily scrape magnet information from a desired URL using Python.
+magnetscrape.py provides a way to easily scrape magnet information from a desired URL using Python, and then use this gather data to activate the 
+local default magnet application.
 
 ## Python Dependencies:
 
 * urllib2
 * re
+* os
+* subprocess
+* sys
 * BeautifulSoup4 http://www.crummy.com/software/BeautifulSoup/#Download
 
 ## Functional Description
@@ -13,8 +17,14 @@ magnetscrape.py provides a way to easily scrape magnet information from a desire
 The 'scrape(url)' function within the project will take in as a parameter the requested internet URL,
 and will attempt to scrape the URL for any and all magnet links that exist. It will collect each magnet link, break apart its contents by the parameters set forth by the Magnet URI Scheme, and store these contents as a dictionary structure. These dictionary structures are then collected together in a list, which is then returned to the user.
 
+The 'activate(magnet_list)' function goes through the parametered list of magnets, and activates the links for the local machine's default application.
 
-**Note:** I've included an extra function dn\_clean\_up(dn) which will clean up the readability of any inputted dn. You would use this if you wanted to get the magnet's original title.
+**Note:** The activate function expects the magnets contained to be of the same
+design as the scrape function output. If you want to only do a subset of magnets
+from the scrape output, make sure to adjust the list accordingly before bringing
+it over to the activate function.
+
+**Also Note:** I've included an extra function dn\_clean\_up(dn) which will clean up the readability of any inputted dn. You would use this if you wanted to get the magnet's original title.
 ## Dictionary Parameters 
 
 See http://en.wikipedia.org/wiki/Magnet_URI_scheme#Parameters for an understanding of each magnet paramter's purpose; and here is a list of each included magnet parameter:
@@ -39,5 +49,8 @@ See http://en.wikipedia.org/wiki/Magnet_URI_scheme#Parameters for an understandi
 import mangetscrape
 
 url = 'your url here'
-list_of_magnet_dictionaries = magnetscrape.scrape(url)
+magnet_list = magnetscrape.scrape(url)
+
+magnetscrape.activate(magnet_list)
+
 ```
