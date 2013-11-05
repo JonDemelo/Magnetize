@@ -1,6 +1,6 @@
-## magnetscrape.py
+## magnetize.py
 
-magnetscrape.py provides a way to easily scrape magnet information from a desired URL using Python, and then use this gather data to activate the 
+magnetize.py provides a way to easily scrape magnet information from a desired URL using Python, and then use this gather data to activate the 
 local default magnet application.
 
 ## Python Dependencies:
@@ -49,8 +49,8 @@ See http://en.wikipedia.org/wiki/Magnet_URI_scheme#Parameters for an understandi
 import mangetscrape
 
 url = 'your url here'
-magnet_list = magnetscrape.scrape(url)
+magnet_list = magnetize.scrape(url)
 
-magnetscrape.activate(magnet_list)
+magnetize.activate(magnet_list)
 
 ```
