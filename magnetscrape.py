@@ -1,5 +1,8 @@
 import urllib2
 import re
+import subprocess
+import os
+import sys
 from bs4 import BeautifulSoup
 
 # Magnet URI Scheme Parameters as per
@@ -43,14 +46,24 @@ def scrape(url):
 
 
 # Takes the chosen list of dictionary-held magnets generated through the scrape
-# function, and activates them via a URL HTTP Request. If working as intended,
-# this should open each magnet connection to the machine's designated magnet
+# function, and open each magnet connection to the machine's designated magnet
 # application.
 #
-# Error: URLLIB2 seems to currently not work with magnet links. Will follow up.
+# Error: Can't run on windows via Cygwin due to a side effect of Cygwin
+# running posix style overtop Windows. i.e. commands dont go down to Windows.
 def download(magnet_list):
     if magnet_list is not None:
         for magnet_dict in magnet_list:
             magnet_link = magnet_dict["magnet"]
             if magnet_link is not None:
-                urllib2.urlopen(magnet_link)
+                print ("\nAttempt to activate the following magnet link with"
+                       "the machine's default magnet application: "
+                       + magnet_link +
+                       "\n")
+
+                if sys.platform.startswith('darwin'):  # OSX
+                    subprocess.call(('open', magnet_link))
+                elif os.name == 'nt':  # Windows
+                    os.startfile(magnet_link)
+                elif os.name == 'posix':  # UNIX-based
+                    subprocess.call(('xdg-open', magnet_link))
