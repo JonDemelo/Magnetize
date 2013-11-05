@@ -24,9 +24,8 @@ def __regex(magnet_param, content):
     return regex.findall(content)
 
 
-# Main utility of the module. Scrapes any magnet links from the selected URL
-# and breaks each magnet as a dictionary of its parameters, all stored
-# together in a list
+# Scrapes any magnet links from the selected URL and breaks each magnet as a
+# dictionary of its parameters, all stored together in a list
 def scrape(url):
     soup = BeautifulSoup(urllib2.urlopen(url))
     magnet_list = []
@@ -41,3 +40,17 @@ def scrape(url):
 
             magnet_list.append(magnet_dict)
     return magnet_list
+
+
+# Takes the chosen list of dictionary-held magnets generated through the scrape
+# function, and activates them via a URL HTTP Request. If working as intended,
+# this should open each magnet connection to the machine's designated magnet
+# application.
+#
+# Error: URLLIB2 seems to currently not work with magnet links. Will follow up.
+def download(magnet_list):
+    if magnet_list is not None:
+        for magnet_dict in magnet_list:
+            magnet_link = magnet_dict["magnet"]
+            if magnet_link is not None:
+                urllib2.urlopen(magnet_link)

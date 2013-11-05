@@ -36,8 +36,8 @@ See http://en.wikipedia.org/wiki/Magnet_URI_scheme#Parameters for an understandi
 ## Example Usage:
 
 ```python
-import mangetscrape.py
+import mangetscrape
 
 url = 'your url here'
-list_of_magnet_dictionaries = scrape(url)
+list_of_magnet_dictionaries = magnetscrape.scrape(url)
 ```
