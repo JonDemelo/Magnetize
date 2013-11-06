@@ -4,6 +4,7 @@ import subprocess
 import os
 import sys
 from bs4 import BeautifulSoup
+from fuzzywuzzy import fuzz, process
 
 # Magnet URI Scheme Parameters as per
 # http://en.wikipedia.org/wiki/Magnet_URI_scheme#Parameters
@@ -45,18 +46,37 @@ def scrape(url):
     return magnet_list
 
 
+# Targets a specific magnet title, and scrapes the most similar candiate
+# from the target url. Activates magnet
+def target(url, title):
+    link_list = []
+    magnet_list = scrape(url)
+
+    for magnet in magnet_list:
+        link_list.append(magnet["magnet"])
+
+    if link_list is not None:
+        result = process.extractOne(title, link_list)
+
+    magnet_dict = {}
+    for param in magnet_params:
+        magnet_dict[param] = __regex(param, result[0])
+    magnet_dict['magnet'] = result[0]
+    activate([magnet_dict])
+
+
 # Takes the chosen list of dictionary-held magnets generated through the scrape
 # function, and open each magnet connection to the machine's designated magnet
 # application.
 #
-# Error: Can't run on cygwin-Windows due to a side effect of Cygwin
-# running posix style overtop Windows. i.e. commands dont go down to Windows.
+# Note: Cygwin-Windows not supported.
 def activate(magnet_list):
     if magnet_list is not None:
         for magnet_dict in magnet_list:
             magnet_link = magnet_dict["magnet"]
             if magnet_link is not None:
                 if sys.platform.startswith('darwin'):  # OSX
+                    print magnet_link
                     subprocess.call(('open', magnet_link))
                 elif os.name == 'nt':  # Windows
                     os.startfile(magnet_link)
