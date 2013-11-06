@@ -3,14 +3,23 @@
 magnetize.py provides a way to easily scrape magnet information from a desired URL using Python, and then use this gather data to activate the 
 local default magnet application.
 
-## Python Dependencies:
+## Python Dependencies
 
 * urllib2
 * re
 * os
 * subprocess
 * sys
+* fuzzywuzzy https://github.com/seatgeek/fuzzywuzzy
 * BeautifulSoup4 http://www.crummy.com/software/BeautifulSoup/#Download
+
+## OS Support
+
+* Windows
+* OSX
+* UNIX-varients
+
+**Note:** Cygwin-Windows not supported
 
 ## Functional Description
 
@@ -48,9 +57,12 @@ See http://en.wikipedia.org/wiki/Magnet_URI_scheme#Parameters for an understandi
 ```python
 import magnetize
 
-url = 'your url here'
-magnet_list = magnetize.scrape(url)
+url = 'http://www.magnetsite.com'
 
+magnet_list = magnetize.scrape(url)
 magnetize.activate(magnet_list)
+
+title = 'Singing in the Rain'
+magnetize.target(url, title)
 
 ```
