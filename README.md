@@ -1,7 +1,6 @@
 ## magnetize.py
 
-magnetize.py provides a way to easily scrape magnet information from a desired URL using Python, and then use this gather data to activate the 
-local default magnet application.
+magnetize.py provides a way to easily scrape magnet information from a desired URL using Python, and then use this gathered data to activate the OS's default magnet application.
 
 ## Python Dependencies
 
