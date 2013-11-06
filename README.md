@@ -28,6 +28,8 @@ and will attempt to scrape the URL for any and all magnet links that exist. It w
 
 The 'activate(magnet_list)' function goes through the parametered list of magnets, and activates the links for the local machine's default application.
 
+The 'target(url, title)', similarly to the scrap function, takes the targetted url, and scrapes the contained magnet links from the website contents. Additionally, 'target' also string matches the parametered title and intellegently string matches the closest match within the collected magnet links. After selecting the most likely candidate, the function then takes the magnet and activates it within the OS's default magnet application.
+
 **Note:** The activate function expects the magnets contained to be of the same
 design as the scrape function output. If you want to only do a subset of magnets
 from the scrape output, make sure to adjust the list accordingly before bringing
